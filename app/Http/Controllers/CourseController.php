@@ -14,7 +14,7 @@ class CourseController extends Controller
     public static function middleware(): array{
         return [
             //new Middleware('auth', only: ['store', 'edit','update']),
-            new Middleware('auth', except: ['index', 'show']),
+            new Middleware('auth:sanctum', except: ['index', 'show']),
         ];
     }
     /**
@@ -24,7 +24,7 @@ class CourseController extends Controller
     public function index()
     {
         //
-        return Course::with('user')->get();
+        return Course::with('user')->latest()->get();
     }
 
     /**
@@ -40,13 +40,7 @@ class CourseController extends Controller
             'course_name'=> 'required',
         ]);
 
-        $course = Course::create([
-            'user_id' => 1,
-            'student_id' => $request->student_id,
-            'level'=> $request -> level,
-            'course_code' => $request -> course_code,
-            'course_name' => $request -> course_name
-        ]);
+        $course = $request->user()->courses()->create($field);
 
         return ["courses" => $course, "user" => $course -> user];
     }
