@@ -34,7 +34,7 @@ class CourseController extends Controller
     {
         //
         $field = $request->validate([
-            'student_id'=> 'required|alpha_num',
+            //'student_id'=> 'required|alpha_num',
             'level'=> 'required|numeric',
             'course_code'=> 'required|alpha_num',
             'course_name'=> 'required',
@@ -62,7 +62,7 @@ class CourseController extends Controller
         //
         Gate::authorize("modify", $course);
         $field = $request->validate([
-            'student_id'=> 'required|alpha_num',
+            //'student_id'=> 'required|alpha_num',
             'level'=> 'required|numeric',
             'course_code'=> 'required|alpha_num',
             'course_name'=> 'required',

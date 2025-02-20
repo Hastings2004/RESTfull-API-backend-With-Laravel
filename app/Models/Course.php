@@ -13,7 +13,6 @@ class Course extends Model
     use HasFactory;
 
     protected $fillable = [
-        "student_id",
         "level",
         "course_code",
         "course_name",
