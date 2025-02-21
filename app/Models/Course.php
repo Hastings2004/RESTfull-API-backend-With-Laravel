@@ -18,9 +18,8 @@ class Course extends Model
         "course_name",
     ] ;
 
-    public function user()
+    public function user(): BelongsTo
     {
-
         return $this->belongsTo(User::class);
     }
 }

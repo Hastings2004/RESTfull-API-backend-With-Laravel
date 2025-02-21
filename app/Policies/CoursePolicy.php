@@ -10,7 +10,7 @@ class CoursePolicy
 {
     public function modify(User $user, Course $course){
         return $user->id === $course->user_id
-            ? Response::allow():Response::deny("Your not the owner of this course");
+            ? Response::allow():Response::deny("Access denied");
 
     }
 }

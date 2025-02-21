@@ -12,7 +12,7 @@ class AuthController extends Controller
 {
     //
     public function login(Request $request){
-        $field = $request->validate([
+        $request->validate([
             'email'=> 'required|max:255|email|exists:users',
             'password'=> 'required',
         ]);
@@ -48,7 +48,7 @@ class AuthController extends Controller
 
         $token = $user -> createToken($request-> name);
 
-        Auth::login();
+        Auth::login($user);
 
         return [
             'user'=> $user,
