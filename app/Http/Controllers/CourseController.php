@@ -6,7 +6,7 @@ use App\Models\Course;
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Gate;
 
 class CourseController extends Controller
