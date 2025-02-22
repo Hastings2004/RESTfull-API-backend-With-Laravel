@@ -13,7 +13,6 @@ class CourseController extends Controller
 {
     public static function middleware(): array{
         return [
-            //new Middleware('auth', only: ['store', 'edit','update']),
             new Middleware('auth:sanctum', except: ['index', 'show']),
         ];
     }
@@ -34,10 +33,9 @@ class CourseController extends Controller
     {
         //
         $field = $request->validate([
-            //'student_id'=> 'required|alpha_num',
             'level'=> 'required|numeric',
-            'course_code'=> 'required|alpha_num',
-            'course_name'=> 'required',
+            'course_code'=> 'required|alpha_num|exists:all_courses,course_code',
+            'course_name'=> 'required|exists:all_courses,course_name',
         ]);
 
         $course = $request->user()->courses()->create($field);
@@ -62,10 +60,9 @@ class CourseController extends Controller
         //
         Gate::authorize("modify", $course);
         $field = $request->validate([
-            //'student_id'=> 'required|alpha_num',
             'level'=> 'required|numeric',
-            'course_code'=> 'required|alpha_num',
-            'course_name'=> 'required',
+            'course_code'=> 'required|alpha_num|exists:all_courses,course_code',
+            'course_name'=> 'required|exists:all_courses,course_name',
         ]);
 
         

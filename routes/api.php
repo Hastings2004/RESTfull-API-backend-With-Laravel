@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
+use App\Models\AllCourse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource("courses", CourseController::class)->middleware('auth:sanctum');
+Route::apiResource("allcourses", AllCourse::class)->middleware('auth:sanctum');
 
 Route::get('/user', function (Request $request) {
     return $request->user();
