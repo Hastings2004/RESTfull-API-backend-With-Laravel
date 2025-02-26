@@ -34,7 +34,7 @@ class CourseController extends Controller
         //
         $field = $request->validate([
             'level'=> 'required|numeric',
-            'course_code'=> 'required|alpha_num|exists:all_courses,course_code',
+            'course_code'=> 'required|alpha_num|exists:all_courses,course_code|uppercase',
             'course_name'=> 'required|exists:all_courses,course_name',
         ]);
 
@@ -49,7 +49,7 @@ class CourseController extends Controller
     public function show(Course $course)
     {
         //
-        return ["courses" => $course, "user" => $course -> user];;
+        return ["courses" => $course, "user" => $course -> user];
     }
 
     /**
@@ -59,9 +59,10 @@ class CourseController extends Controller
     {
         //
         Gate::authorize("modify", $course);
+
         $field = $request->validate([
             'level'=> 'required|numeric',
-            'course_code'=> 'required|alpha_num|exists:all_courses,course_code',
+            'course_code'=> 'required|alpha_num|exists:all_courses,course_code|uppercase',
             'course_name'=> 'required|exists:all_courses,course_name',
         ]);
 
@@ -83,6 +84,7 @@ class CourseController extends Controller
     {
         //
         Gate::authorize("modify", $course);
+        
         $course->delete();
 
         return [

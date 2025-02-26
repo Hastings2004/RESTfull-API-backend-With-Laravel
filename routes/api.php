@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AllCourseController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CourseController;
 use App\Models\AllCourse;
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource("courses", CourseController::class)->middleware('auth:sanctum');
-Route::apiResource("allcourses", AllCourse::class)->middleware('auth:sanctum');
+Route::apiResource("allcourses", AllCourseController::class);
 
 Route::get('/user', function (Request $request) {
     return $request->user();

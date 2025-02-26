@@ -9,4 +9,12 @@ class AllCourse extends Model
 {
     /** @use HasFactory<\Database\Factories\AllCourseFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        "level",
+        "course_code",
+        "course_name",
+    ] ;
+
+
 }
