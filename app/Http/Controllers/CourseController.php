@@ -34,8 +34,8 @@ class CourseController extends Controller
         //
         $field = $request->validate([
             'level'=> 'required|numeric',
-            'course_code'=> 'required|alpha_num|exists:all_courses,course_code|uppercase',
-            'course_name'=> 'required|exists:all_courses,course_name',
+            'course_code'=> 'required|alpha_num|uppercase',
+            'course_name'=> 'required',
         ]);
 
         $course = $request->user()->courses()->create($field);
@@ -62,8 +62,8 @@ class CourseController extends Controller
 
         $field = $request->validate([
             'level'=> 'required|numeric',
-            'course_code'=> 'required|alpha_num|exists:all_courses,course_code|uppercase',
-            'course_name'=> 'required|exists:all_courses,course_name',
+            'course_code'=> 'required|alpha_num|uppercase',
+            'course_name'=> 'required',
         ]);
 
         

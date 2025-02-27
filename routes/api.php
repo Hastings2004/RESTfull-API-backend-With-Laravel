@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::apiResource("courses", CourseController::class)->middleware('auth:sanctum');
-Route::apiResource("allcourses", AllCourseController::class);
+
+
+
+//Route::apiResource("allcourses", AllCourseController::class);
 
 Route::get('/user', function (Request $request) {
     return $request->user();
